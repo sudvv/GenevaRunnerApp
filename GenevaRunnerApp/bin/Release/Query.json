@@ -1,0 +1,74 @@
+﻿{
+  "AllQuries": [
+    {
+      "Qurey": [
+        {
+          "Name": "Memory_of_omsagent",
+          "Query": "Perf | where ObjectName == 'K8SContainer' | where CounterName == 'memoryRssBytes' | where InstanceName contains 'omsagent' | where CounterValue > 40000000",
+          "FilterCondition": "",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "CPU_of_omsagent",
+          "Query": "Perf | where ObjectName == 'K8SContainer' | where CounterName == 'cpuUsageNanoCores' | where InstanceName contains 'omsagent' | where CounterValue > 27000000",
+          "FilterCondition": "",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "No_more_than_5_mb",
+          "Query": "Usage | where QuantityUnit == 'MBytes'| where Quantity > 5",
+          "FilterCondition": "",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "KubeEvents_CL",
+          "Query": "KubeEvents_CL",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "KubeNodeInventory",
+          "Query": "KubeNodeInventory",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "KubePodInventory",
+          "Query": "KubePodInventory",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "KubeServices_CL",
+          "Query": "KubeServices_CL ",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "K8SContainer_memoryRssBytes",
+          "Query": "Perf | where ObjectName == 'K8SContainer' | where CounterName == 'memoryRssBytes'",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "K8SContainer_memoryLimitBytes",
+          "Query": "Perf | where ObjectName == 'K8SContainer' | where CounterName == 'memoryLimitBytes'",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "K8SNode_memoryRssBytes",
+          "Query": "Perf | where ObjectName == 'K8SNode' | where CounterName == 'memoryRssBytes'",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        },
+        {
+          "Name": "K8SNode_memoryLimitBytes",
+          "Query": "Perf | where ObjectName == 'K8SNode' | where CounterName == 'memoryLimitBytes'",
+          "FilterCondition": "| where TimeGenerated > ago(24h)",
+          "ExpectedResult": ""
+        }
+      ]
+    }
+  ]
+}

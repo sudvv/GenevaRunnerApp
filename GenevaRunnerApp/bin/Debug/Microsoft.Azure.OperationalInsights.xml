@@ -1,0 +1,743 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.OperationalInsights</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient">
+            <summary>
+            Operational Insights Data Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.AdditionalWorkspaces">
+            <summary>
+            Additional workspaces referenced in cross-resource queries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.Preferences">
+            <summary>
+            Query preferences.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.NameHeader">
+            <summary>
+            Unique name for the calling application. This is only used for telemetry and debugging.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.RequestId">
+            <summary>
+            A unique ID per request. This will be generated per request if not specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.WorkspaceId">
+            <summary>
+            ID of the workspace. This is Workspace ID from the Properties blade
+            in the Azure portal.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.Credentials">
+            <summary>
+            Subscription credentials which uniquely identify client
+            subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient.QueryWithHttpMessagesAsync(System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IList{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Execute an Analytics query
+            </summary>
+            <remarks>
+            Executes an Analytics query for data.
+            [Here](/documentation/2-Using-the-API/Query) is an example for
+            using POST with an Analytics query.
+            </remarks>
+            <param name='query'>
+            The query to execute.
+            </param>
+            <param name='timespan'>
+            Optional. The timespan over which to query data. This is an ISO8601
+            time period value.  This timespan is applied in addition to any
+            that are specified in the query expression.
+            </param>
+            <param name='workspaces'>
+            A list of workspaces that are included in the query.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ApiPreferences.IncludeRender">
+            <summary>
+            See https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ApiPreferences.IncludeStatistics">
+            <summary>
+             See https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ApiPreferences.Wait">
+            <summary>
+            Puts an upper bound on the amount of time the server will spend processing the query. See: https://dev.loganalytics.io/documentation/Using-the-API/Timeouts
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.ErrorDetail">
+            <summary>
+            Error details.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorDetail class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IList{System.String},System.Object)">
+            <summary>
+            Initializes a new instance of the ErrorDetail class.
+            </summary>
+            <param name="code">The error's code.</param>
+            <param name="message">A human readable error message.</param>
+            <param name="target">Indicates which property in the request is
+            responsible for the error.</param>
+            <param name="value">Indicates which value in 'target' is
+            responsible for the error.</param>
+            <param name="resources">Indicates resources which were responsible
+            for the error.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Code">
+            <summary>
+            Gets or sets the error's code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Message">
+            <summary>
+            Gets or sets a human readable error message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Target">
+            <summary>
+            Gets or sets indicates which property in the request is responsible
+            for the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Value">
+            <summary>
+            Gets or sets indicates which value in 'target' is responsible for
+            the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Resources">
+            <summary>
+            Gets or sets indicates resources which were responsible for the
+            error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.AdditionalProperties">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorDetail.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.ErrorInfo">
+            <summary>
+            The code and message for an error.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorInfo class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.#ctor(System.String,System.String,System.Collections.Generic.IList{Microsoft.Azure.OperationalInsights.Models.ErrorDetail},Microsoft.Azure.OperationalInsights.Models.ErrorInfo,System.Object)">
+            <summary>
+            Initializes a new instance of the ErrorInfo class.
+            </summary>
+            <param name="code">A machine readable error code.</param>
+            <param name="message">A human readable error message.</param>
+            <param name="details">error details.</param>
+            <param name="innererror">Inner error details if they exist.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.Code">
+            <summary>
+            Gets or sets a machine readable error code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.Message">
+            <summary>
+            Gets or sets a human readable error message.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.Details">
+            <summary>
+            Gets or sets error details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.Innererror">
+            <summary>
+            Gets or sets inner error details if they exist.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.AdditionalProperties">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorInfo.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.ErrorResponse">
+            <summary>
+            Error details.
+            </summary>
+            <remarks>
+            Contains details when the response code indicates an error.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponse.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponse.#ctor(Microsoft.Azure.OperationalInsights.Models.ErrorInfo)">
+            <summary>
+            Initializes a new instance of the ErrorResponse class.
+            </summary>
+            <param name="error">The error details.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorResponse.Error">
+            <summary>
+            Gets or sets the error details.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponse.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException">
+            <summary>
+            Exception thrown for an invalid response with ErrorResponse
+            information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.Request">
+            <summary>
+            Gets information about the associated HTTP request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.Response">
+            <summary>
+            Gets information about the associated HTTP response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.Body">
+            <summary>
+            Gets or sets the body object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.#ctor">
+            <summary>
+            Initializes a new instance of the ErrorResponseException class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ErrorResponseException class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the ErrorResponseException class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="innerException">Inner exception.</param>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.QueryResults">
+            <summary>
+            The query response. This currently only supports the thinned query
+            response format.
+            </summary>
+            <summary>
+            A query response.
+            </summary>
+            <remarks>
+            Contains the tables, columns &amp; rows resulting from a query.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryResults.Results">
+            <summary>
+            Enumerates over all rows in all tables.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryResults.Render">
+            <summary>
+            If requested, contains visualization information for the results. See https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions for more info.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryResults.Statistics">
+            <summary>
+            If requested, contains query statistics. See https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions for more info.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryResults.#ctor">
+            <summary>
+            Initializes a new instance of the QueryResults class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryResults.#ctor(System.Collections.Generic.IList{Microsoft.Azure.OperationalInsights.Models.Table})">
+            <summary>
+            Initializes a new instance of the QueryResults class.
+            </summary>
+            <param name="tables">The list of tables, columns and rows.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryResults.Tables">
+            <summary>
+            Gets or sets the list of tables, columns and rows.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryResults.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.Column">
+            <summary>
+            A table column.
+            </summary>
+            <remarks>
+            A column in a table.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.Column.#ctor">
+            <summary>
+            Initializes a new instance of the Column class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.Column.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Column class.
+            </summary>
+            <param name="name">The name of this column.</param>
+            <param name="type">The data type of this column.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.Column.Name">
+            <summary>
+            Gets or sets the name of this column.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.Column.Type">
+            <summary>
+            Gets or sets the data type of this column.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.QueryBody">
+            <summary>
+            The Analytics query. Learn more about the [Analytics query
+            syntax](https://azure.microsoft.com/documentation/articles/app-insights-analytics-reference/)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryBody.#ctor">
+            <summary>
+            Initializes a new instance of the QueryBody class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryBody.#ctor(System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IList{System.String})">
+            <summary>
+            Initializes a new instance of the QueryBody class.
+            </summary>
+            <param name="query">The query to execute.</param>
+            <param name="timespan">Optional. The timespan over which to query
+            data. This is an ISO8601 time period value.  This timespan is
+            applied in addition to any that are specified in the query
+            expression.</param>
+            <param name="workspaces">A list of workspaces that are included in
+            the query.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryBody.Query">
+            <summary>
+            Gets or sets the query to execute.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryBody.Timespan">
+            <summary>
+            Gets or sets optional. The timespan over which to query data. This
+            is an ISO8601 time period value.  This timespan is applied in
+            addition to any that are specified in the query expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.QueryBody.Workspaces">
+            <summary>
+            Gets or sets a list of workspaces that are included in the query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.QueryBody.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.Models.Table">
+            <summary>
+            A query response table.
+            </summary>
+            <remarks>
+            Contains the columns and rows for one table in a query response.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.Table.#ctor">
+            <summary>
+            Initializes a new instance of the Table class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.Table.#ctor(System.String,System.Collections.Generic.IList{Microsoft.Azure.OperationalInsights.Models.Column},System.Collections.Generic.IList{System.Collections.Generic.IList{System.String}})">
+            <summary>
+            Initializes a new instance of the Table class.
+            </summary>
+            <param name="name">The name of the table.</param>
+            <param name="columns">The list of columns in this table.</param>
+            <param name="rows">The resulting rows from this query.</param>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.Table.Name">
+            <summary>
+            Gets or sets the name of the table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.Table.Columns">
+            <summary>
+            Gets or sets the list of columns in this table.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.Models.Table.Rows">
+            <summary>
+            Gets or sets the resulting rows from this query.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.Models.Table.Validate">
+            <summary>
+            Validate the object.
+            </summary>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown if validation fails
+            </exception>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient">
+            <summary>
+            Operational Insights Data Client
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(Microsoft.Rest.ServiceClientCredentials)">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Subscription credentials which uniquely identify client subscription.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.AdditionalWorkspaces">
+            <summary>
+            Additional workspaces referenced in cross-resource queries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.Preferences">
+            <summary>
+            Query preferences.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.NameHeader">
+            <summary>
+            Unique name for the calling application. This is only used for telemetry and debugging.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.RequestId">
+            <summary>
+            A unique ID per request. This will be generated per request if not specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.WorkspaceId">
+            <summary>
+            ID of the workspace. This is Workspace ID from the Properties blade in the
+            Azure portal.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.Credentials">
+            <summary>
+            Subscription credentials which uniquely identify client subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Subscription credentials which uniquely identify client subscription.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Subscription credentials which uniquely identify client subscription.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Subscription credentials which uniquely identify client subscription.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the OperationalInsightsDataClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Subscription credentials which uniquely identify client subscription.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClient.QueryWithHttpMessagesAsync(System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IList{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Execute an Analytics query
+            </summary>
+            <remarks>
+            Executes an Analytics query for data.
+            [Here](/documentation/2-Using-the-API/Query) is an example for using POST
+            with an Analytics query.
+            </remarks>
+            <param name='query'>
+            The query to execute.
+            </param>
+            <param name='timespan'>
+            Optional. The timespan over which to query data. This is an ISO8601 time
+            period value.  This timespan is applied in addition to any that are
+            specified in the query expression.
+            </param>
+            <param name='workspaces'>
+            A list of workspaces that are included in the query.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Azure.OperationalInsights.Models.ErrorResponseException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClientExtensions">
+            <summary>
+            Extension methods for OperationalInsightsDataClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClientExtensions.Query(Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient,System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IList{System.String})">
+            <summary>
+            Execute an Analytics query
+            </summary>
+            <remarks>
+            Executes an Analytics query for data.
+            [Here](/documentation/2-Using-the-API/Query) is an example for using POST
+            with an Analytics query.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='query'>
+            The query to execute.
+            </param>
+            <param name='timespan'>
+            Optional. The timespan over which to query data. This is an ISO8601 time
+            period value.  This timespan is applied in addition to any that are
+            specified in the query expression.
+            </param>
+            <param name='workspaces'>
+            A list of workspaces that are included in the query.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.OperationalInsights.OperationalInsightsDataClientExtensions.QueryAsync(Microsoft.Azure.OperationalInsights.IOperationalInsightsDataClient,System.String,System.Nullable{System.TimeSpan},System.Collections.Generic.IList{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Execute an Analytics query
+            </summary>
+            <remarks>
+            Executes an Analytics query for data.
+            [Here](/documentation/2-Using-the-API/Query) is an example for using POST
+            with an Analytics query.
+            </remarks>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='query'>
+            The query to execute.
+            </param>
+            <param name='timespan'>
+            Optional. The timespan over which to query data. This is an ISO8601 time
+            period value.  This timespan is applied in addition to any that are
+            specified in the query expression.
+            </param>
+            <param name='workspaces'>
+            A list of workspaces that are included in the query.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

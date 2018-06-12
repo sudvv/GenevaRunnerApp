@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Runners>
+
+  <RunnerDefinition RunnerName="InfraInsights_AzureLogAnalyticsRunnerProdTest" Description="This is a sample on how to author runner instances.">
+
+    <!-- Any configuration Name/Value can be put into GlobalConfiguration, EnvironmentConfiguration or local configuration section. 
+         LocalConfiguration gets higher precedance than EnvironmentConfiguration which gets higher precedence over GlobalConfiguration. -->
+
+    <GlobalConfiguration>
+      <Configuration Name="Component" Value="AzureLogAnalytics"/>
+      <!-- Replace it with your component name. -->
+      <Configuration Name="Description" Value="TBD"/>
+
+      <!-- This is the expected frequency which the runners run at, also corresponds to the life time of the health reports submitted by the runner. Default value is 10 if none is provided. -->
+      <Configuration Name="ExpectedIntervalInMinutes" Value="10"/>
+      <Configuration Name="Owner" Value="v-sudvv@microsoft.com"/>
+      <Configuration Name="AADClientId" Value="fa6e8eaf-8a39-46ca-a27c-f6ae2dca34b9"/>
+      <Configuration Name="AadCertSubjectName" Value="RunnerSvcAAD-LATest"/>
+      <Configuration Name="AadCertThumbprint" Value="E37A1DB5FEF9E1BDF7168D03EF643C5148BABD1D"/>
+      <Configuration Name="KeyvaultCertficateId" Value="https://tunnerkeyvault.vault.azure.net/secrets/test"/>
+      <Configuration Name="KeyvaultSecretId" Value="https://tunnerkeyvault.vault.azure.net/secrets/KeyvaultSecretId"/>
+      <Configuration Name="ClientId" Value="fa6e8eaf-8a39-46ca-a27c-f6ae2dca34b9"/>
+      <Configuration Name="TokenAudience" Value="https://api.loganalytics.io/"/>
+      <Configuration Name="AuthEndpoint" Value="https://login.microsoftonline.com"/>
+      <Configuration Name="Domain" Value="microsoft.onmicrosoft.com"/>
+      <Configuration Name="MdmAccountName" Value="InfraInsights"/>
+      <Configuration Name="MdmNamespace" Value="TestResults"/>
+      <Configuration Name="Query" Value="union * | take 5"/>
+      <Configuration Name="ServiceEndpoint" Value="prod.service.net"/>
+      <Configuration Name="FilterCondition" Value="| where TimeGenerated > ago(1h)"/>
+      <Configuration Name="SleepTime" Value="50000"/>
+    </GlobalConfiguration>
+
+    <!-- On-Behalf Health Reporting setup 
+      HealthAccountName: Your MDM Account.
+      CertThumbprint: (Optional) Thumbprint of a certificate used to emit health reports. 
+                      The certificate must be installed in the runner container.
+      HealthEndpoint: (Optional) Specific health endpoint to emit the health reports to. 
+                      If not provided then it will use the default for the Geneva Warm Path endpoint. -->
+    <GlobalHealthDimension HealthAccountName="InfraInsights" />
+
+    <Certificates>
+      <Certificate Id="GlobalLevel" Thumbprint="E37A1DB5FEF9E1BDF7168D03EF643C5148BABD1D" />
+    </Certificates>
+
+    <Environment EnvironmentName="ProdTest">
+      <EnvironmentConfiguration>
+        <!--<Configuration Name="WorkspaceId" Value="ae18d145-9233-4205-8661-0bf3ea1037c7"/>-->
+      </EnvironmentConfiguration>
+      <RunnerInstance RunnerInstanceName="aks-noload-eastus" >
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="ae18d145-9233-4205-8661-0bf3ea1037c7"/>
+          <Configuration Name="WorkspaceName" Value="aks-noload-eastus"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="aks-noload-westeurope">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="92d715a2-5ae2-43be-8692-1f3786c0b9c1"/>
+          <Configuration Name="WorkspaceName" Value="aks-noload-westeurope"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-7-12">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="646bcdc3-827f-46cb-8ad8-34c2e63396ee"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-7-12"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-7-15">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="5bb39e09-61b5-4867-a8c1-48405f05bf35"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-7-15"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-7-16">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="0047e025-109e-4a84-ab1d-268c52752091"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-7-16"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-7-7">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="878e0da2-3893-40d1-be03-c2e82c312624"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-7-7"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-7-9">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="ea0a7fc6-5782-4497-9b54-90343b2b92ce"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-7-9"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-8-1">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="49d081c3-589c-4ef1-bd01-b055cac1b2cd"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-8-1"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-8-10">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="7ab66931-fd88-4757-b9e5-2754c70e4575"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-8-10"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-8-11">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="e91cedae-7c74-4553-9155-17a976814ca8"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-8-11"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kube-ver-1-8-2">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="42a5a8da-e148-4a79-8e36-8df415c1c01e"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kube-ver-1-8-2"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-8-6">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="23dad71c-6e3e-4e31-bc58-ff3ea38ea713"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-8-6"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-8-7">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="aedbcba4-921b-4b77-9135-4070ecbfb61b"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-8-7"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-9-1">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="a9a720fd-111f-43b1-8bdf-31659baaf535"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-9-1"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-9-2">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="4c8bd47b-5851-4413-96df-ea88312985a6"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-9-2"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+      <RunnerInstance RunnerInstanceName="ci-aks-kubever-1-9-6">
+        <CommandExe>GenevaRunnerApp.exe</CommandExe>
+        <CommandLineParameters></CommandLineParameters>
+        <LocalConfigurations>
+          <Configuration Name="WorkspaceId" Value="b2d84bf1-71a2-4448-9d8f-28d9aff63c15"/>
+          <Configuration Name="WorkspaceName" Value="ci-aks-kubever-1-9-6"/>
+        </LocalConfigurations>
+      </RunnerInstance>
+    </Environment>
+  </RunnerDefinition>
+</Runners>

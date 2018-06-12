@@ -1,0 +1,17 @@
+﻿{
+  "AllQuries": [
+    {
+      "Ctegory": "Perf",
+      "Quries": [
+        {
+          "Name": "memoryRssBytes",
+          "Query": "Perf | where ObjectName == 'K8SContainer' | where CounterName == 'memoryRssBytes' | where InstanceName contains 'omsagent'",
+          "FilterCondition": "| where TimeGenerated > ago(10m) | summarize Average = avg(CounterValue)  by  Computer",
+          "ExpectedResult": "1",
+          "ExpectedCondition": "gt",
+          "Prefix": "_memory"
+        }
+      ]
+    }
+  ]
+}

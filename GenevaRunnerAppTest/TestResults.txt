@@ -1,0 +1,25 @@
+Enveronment area:aks-noload-eastus
+    Category: Resource Usage Verification
+        Test Name: Memory_of_omsagent,  Result: False, RecordsCount: 131
+        Test Name: CPU_of_omsagent,  Result: True, RecordsCount: 0
+        Test Name: No_more_than_5_mb,  Result: True, RecordsCount: 0
+    Category: Kubernetes Specific
+        Test Name: KubeEvents_CL,  Result: False, RecordsCount: 0
+        Test Name: KubeNodeInventory,  Result: True, RecordsCount: 3861
+        Test Name: KubePodInventory,  Result: True, RecordsCount: 28270
+        Test Name: KubeServices_CL,  Result: True, RecordsCount: 7716
+        Test Name: K8SContainer_memoryRssBytes,  Result: True, RecordsCount: 19900
+        Test Name: K8SContainer_memoryLimitBytes,  Result: True, RecordsCount: 28314
+        Test Name: K8SNode_memoryRssBytes,  Result: True, RecordsCount: 3303
+        Test Name: K8SNode_memoryLimitBytes,  Result: False, RecordsCount: 0
+    Category: Misc Verification
+        Test Name: Heartbeat_flowing,  Result: True, RecordsCount: 29
+        Test Name: Operation_not_flowing,  Result: False, RecordsCount: 5
+    Category:  Docker Logs
+        Test Name: Container_Inventory,  Result: True, RecordsCount: 1918
+        Test Name: Container_Service_Log,  Result: True, RecordsCount: 2163
+        Test Name: Container_Image_Inventory,  Result: True, RecordsCount: 1059
+        Test Name: Container_Node_Inventory_CL,  Result: True, RecordsCount: 132
+        Test Name: Container_Process_CL,  Result: True, RecordsCount: 2758
+        Test Name: Perf_One_of_counters_from_Docker,  Result: True, RecordsCount: 1434
+        Test Name: ContainerLog_k8s,  Result: True, RecordsCount: 0
